@@ -3,6 +3,29 @@ import { useEffect, useState } from "react";
 import Button from "@/components/utils/button";
 
 export default function Navbar() {
+  const navListClass = `
+    relative 
+    inline-block 
+    mx-3 
+    hover:text-[#63FFD9]
+    after:content-['']
+    after:absolute
+    after:w-full
+    after:h-[1px]
+    after:bottom-[-2px]
+    after:left-0
+    after:bg-[#63FFD9]
+    
+    after:transition-transform
+    after:duration-220
+    after:ease-out
+    
+    after:scale-x-0
+    after:origin-right
+    
+    hover:after:scale-x-100
+    hover:after:origin-left`;
+
   const [hidden, setHidden] = useState(true);
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -30,16 +53,16 @@ export default function Navbar() {
         </div>
         <div className="flex list-none items-center">
           <a href="#about">
-            <li className="mx-4 hover:text-[#63FFD9]">About</li>
+            <li className={navListClass}>About</li>
           </a>
           <a href="#skills">
-            <li className="mx-4 hover:text-[#63FFD9]">Skills</li>
+            <li className={navListClass}>Skills</li>
           </a>
           <a href="#projects">
-            <li className="mx-4 hover:text-[#63FFD9]">Projects</li>
+            <li className={navListClass}>Projects</li>
           </a>
           <a href="#contact">
-            <li className="mx-4 hover:text-[#63FFD9]">Contact</li>
+            <li className={navListClass}>Contact</li>
           </a>
           <Button className="ml-4 px-3 py-2">Resume</Button>
         </div>
