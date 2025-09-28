@@ -1,4 +1,4 @@
-export default function TimelineItem({ data, isLeft }) {
+export default function TimelineItem({ data, isLeft = false }) {
   const { date, title, company, description } = data;
 
   const containerClass = `mb-30 flex justify-between items-center w-full ${
@@ -15,7 +15,7 @@ export default function TimelineItem({ data, isLeft }) {
         <div
           className="
             w-5 h-5 
-            bg-gray-800 
+            bg-neutral-800
             border-2 border-[#63FFD9] 
             rounded-full
             
