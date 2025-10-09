@@ -1,20 +1,20 @@
 export default function TimelineItem({ data, isLeft = false }) {
   const { date, title, company, description } = data;
 
-  const containerClass = `mb-30 flex justify-between items-center w-full ${
+  const containerClass = `mb-20 pb-20 pt-10 flex justify-between items-center w-full ${
     isLeft ? "flex-row-reverse" : ""
   }`;
   const contentClass = `w-200 ${
-    isLeft ? "text-right mr-10" : "text-left ml-10"
+    isLeft ? "text-right mr-12" : "text-left ml-12"
   }`;
 
   return (
     <div className={containerClass}>
-      <div className={`w-200 ${isLeft ? "ml-10" : "mr-10"}`}></div>
+      <div className={`w-200 ${isLeft ? "ml-12" : "mr-12"}`}></div>
       <div className="relative z-10">
         <div
           className="
-            w-5 h-5 
+            w-5 h-5
             bg-neutral-800
             border-2 border-[#63FFD9] 
             rounded-full

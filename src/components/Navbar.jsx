@@ -4,9 +4,9 @@ import Button from "@/components/utils/button";
 
 export default function Navbar() {
   const navListClass = `
-    relative 
-    inline-block 
-    mx-3 
+    relative
+    inline-block
+    mx-3
     hover:text-[#63FFD9]
     after:content-['']
     after:absolute
@@ -15,16 +15,17 @@ export default function Navbar() {
     after:bottom-[-2px]
     after:left-0
     after:bg-[#63FFD9]
-    
+
     after:transition-transform
     after:duration-220
     after:ease-out
-    
+
     after:scale-x-0
     after:origin-right
-    
+
     hover:after:scale-x-100
-    hover:after:origin-left`;
+    hover:after:origin-left
+  `;
 
   const [hidden, setHidden] = useState(true);
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function Navbar() {
     };
   }, []);
   return (
-    <header className="w-full p-7 px-15">
+    <header className="w-full p-7 px-15 h-[100px]">
       <nav className="flex justify-between">
         <div className="flex items-center">
           <a href="/">
