@@ -4,8 +4,73 @@ import Timeline from "@/components/Timeline";
 import TimelineItem from "@/components/TimelineItem";
 import { education } from "@/data/education";
 import FeaturedProjects from "@/components/FeaturedProjects";
+import ToolCard from "@/components/utils/ToolCard";
+import { frontend, backend, others } from "@/data/tools";
+import Tool from "@/components/utils/Tool";
+import {
+  IconBrandFirebase,
+  IconBrandJavascript,
+  IconBrandMongodb,
+  IconBrandNextjs,
+  IconBrandReact,
+  IconBrandTailwind,
+  IconBrandTypescript,
+  IconDatabase,
+  IconCloud,
+  IconPhotoQuestion,
+  IconBrandNodejs,
+  IconBrandGit,
+  IconBrandDocker,
+  IconBrandPython,
+  IconBrandDjango,
+  IconBrandMysql,
+  IconCoffee,
+} from "@tabler/icons-react";
 
 export default function Home() {
+  const iconSelector = (tool) => {
+    switch (tool) {
+      case "TypeScript":
+        return <IconBrandTypescript className="min-h-6 min-w-6" />;
+      case "JavaScript (ES6+)":
+        return <IconBrandJavascript className="min-h-6 min-w-6" />;
+      case "React.js":
+        return <IconBrandReact className="min-h-6 min-w-6" />;
+      case "Next.js":
+        return <IconBrandNextjs className="min-h-6 min-w-6" />;
+      case "Tailwind CSS":
+        return <IconBrandTailwind className="min-h-6 min-w-6" />;
+      case "Node.js":
+        return <IconBrandNodejs className="min-h-6 min-w-6" />;
+      case "MongoDB":
+        return <IconBrandMongodb className="min-h-6 min-w-6" />;
+      case "InfluxDB":
+        return <IconDatabase className="min-h-6 min-w-6" />;
+      case "Cloudinary":
+        return <IconCloud className="min-h-6 min-w-6" />;
+      case "Firebase":
+        return <IconBrandFirebase className="min-h-6 min-w-6" />;
+      case "Express":
+        return <IconBrandExpressjs className="min-h-6 min-w-6" />;
+      case "Git":
+        return <IconBrandGit className="min-h-6 min-w-6" />;
+      case "Docker":
+        return <IconBrandDocker className="min-h-6 min-w-6" />;
+      case "Python":
+        return <IconBrandPython className="min-h-6 min-w-6" />;
+      case "Java":
+        return <IconCoffee className="min-h-6 min-w-6" />;
+      case "Django":
+        return <IconBrandDjango className="min-h-6 min-w-6" />;
+      case "SQL":
+        return <IconBrandMysql className="min-h-6 min-w-6" />;
+      case "Firebase":
+        return <IconBrandFirebase className="min-h-6 min-w-6" />;
+      default:
+        return <IconPhotoQuestion className="min-h-6 min-w-6" />;
+    }
+  };
+
   return (
     <main className="px-35 flex flex-col items-center">
       {/* Hero Section */}
@@ -13,9 +78,9 @@ export default function Home() {
         id="hero"
         className="flex flex-col max-w-full justify-center mb-50 min-h-[calc(100vh-100px)]"
       >
-        <div className="flex gap-30 max-w-250">
+        <div className="lg:flex gap-30 max-w-250">
           {/* Intro */}
-          <div className="max-w-145">
+          <div className="max-w-145 mb-7 lg:mb-0 ">
             <h6 className="text-lg font-thin text-[#63FFD9]">
               Hello, my name is
             </h6>
@@ -117,7 +182,7 @@ export default function Home() {
 
       {/* Skills Section */}
       <section id="skills" className="mb-50 max-w-full">
-        <div className="max-w-250">
+        <div>
           <h1
             className="
                 relative
@@ -127,7 +192,7 @@ export default function Home() {
                 mb-13
                 hover:text-[#63FFD9]
                 before:absolute
-                before:content-[''] 
+                before:content-['']
                 before:w-8
                 hover:before:w-full
                 before:bottom-[-3px]
@@ -140,6 +205,35 @@ export default function Home() {
           >
             Skills
           </h1>
+          <div className="grid grid-cols-1 lg:flex gap-12">
+            {/* Frontend */}
+            <ToolCard skill={"Frontend"}>
+              {frontend.map((tool) => (
+                <Tool key={tool.id}>
+                  {iconSelector(tool.tool)}
+                  <p>{tool.tool}</p>
+                </Tool>
+              ))}
+            </ToolCard>
+            {/* Backend */}
+            <ToolCard skill={"Backend"}>
+              {backend.map((tool) => (
+                <Tool key={tool.id}>
+                  {iconSelector(tool.tool)}
+                  <p>{tool.tool}</p>
+                </Tool>
+              ))}
+            </ToolCard>
+            {/* Others */}
+            <ToolCard skill={"Others"}>
+              {others.map((tool) => (
+                <Tool key={tool.id}>
+                  {iconSelector(tool.tool)}
+                  <p>{tool.tool}</p>
+                </Tool>
+              ))}
+            </ToolCard>
+          </div>
         </div>
       </section>
 

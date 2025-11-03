@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Button from "@/components/utils/button";
+import { IconMenuDeep } from "@tabler/icons-react";
 
 export default function Navbar() {
   const navListClass = `
@@ -39,6 +40,7 @@ export default function Navbar() {
   return (
     <header className="w-full p-7 px-15 h-[100px]">
       <nav className="flex justify-between">
+        {/* Logo */}
         <div className="flex items-center">
           <a href="/">
             <p className="text-xl font-semibold hover:text-[#63FFD9]">
@@ -52,7 +54,8 @@ export default function Navbar() {
             }`}
           ></span>
         </div>
-        <div className="flex list-none items-center">
+        {/* Nav Links */}
+        <div className="hidden lg:flex list-none items-center">
           <a href="#about">
             <li className={navListClass}>About</li>
           </a>
@@ -67,6 +70,13 @@ export default function Navbar() {
           </a>
           <Button className="ml-4 px-3 py-2">Resume</Button>
         </div>
+        <button
+          className="lg:hidden text-white z-50"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle Menu"
+        >
+          <IconMenuDeep className="min-w-6 min-h-6" />
+        </button>
       </nav>
     </header>
   );
