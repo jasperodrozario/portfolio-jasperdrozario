@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Button from "@/components/utils/button";
-import { IconMenuDeep } from "@tabler/icons-react";
+import { IconMenuDeep, IconX } from "@tabler/icons-react";
 
 export default function Navbar() {
   const navListClass = `
@@ -28,6 +28,7 @@ export default function Navbar() {
     hover:after:origin-left
   `;
 
+  // Logo cursor blinking logic
   const [hidden, setHidden] = useState(true);
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -37,6 +38,44 @@ export default function Navbar() {
       clearInterval(intervalId);
     };
   }, []);
+
+  // Sliding menu state logic
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleSetIsMenuOpen = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Logic to disable scrolling when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
+  const navLinks = (
+    <>
+      <a href="#about">
+        <li className={navListClass}>About</li>
+      </a>
+      <a href="#skills">
+        <li className={navListClass}>Skills</li>
+      </a>
+      <a href="#projects">
+        <li className={navListClass}>Projects</li>
+      </a>
+      <a href="#contact">
+        <li className={navListClass}>Contact</li>
+      </a>
+      <Button className="ml-4 px-3 py-2">Resume</Button>
+    </>
+  );
+
   return (
     <header className="w-full p-7 px-15 h-[100px]">
       <nav className="flex justify-between">
@@ -55,28 +94,32 @@ export default function Navbar() {
           ></span>
         </div>
         {/* Nav Links */}
-        <div className="hidden lg:flex list-none items-center">
-          <a href="#about">
-            <li className={navListClass}>About</li>
-          </a>
-          <a href="#skills">
-            <li className={navListClass}>Skills</li>
-          </a>
-          <a href="#projects">
-            <li className={navListClass}>Projects</li>
-          </a>
-          <a href="#contact">
-            <li className={navListClass}>Contact</li>
-          </a>
-          <Button className="ml-4 px-3 py-2">Resume</Button>
-        </div>
+        <div className="hidden lg:flex list-none items-center">{navLinks}</div>
         <button
           className="lg:hidden text-white z-50"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={handleSetIsMenuOpen}
           aria-label="Toggle Menu"
         >
-          <IconMenuDeep className="min-w-6 min-h-6" />
+          {isMenuOpen ? (
+            <IconX className="min-w-10 min-h-10" />
+          ) : (
+            <IconMenuDeep className="min-w-10 min-h-10" />
+          )}
         </button>
+
+        {/* Mobile slider menu */}
+        <div
+          className={`
+            fixed top-0 right-0 h-screen w-screen bg-neutral-900 shadow-xl 
+            transform transition-transform duration-300 ease-in-out lg:hidden
+            ${isMenuOpen ? "translate-x-0" : "translate-x-full"}
+            pt-20
+          `}
+        >
+          <ul className="flex flex-col items-end mr-5 space-y-6 p-8 list-none">
+            {navLinks}
+          </ul>
+        </div>
       </nav>
     </header>
   );
