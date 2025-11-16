@@ -9,7 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@react-email/components": "1.0.1",
     "@tabler/icons-react": "^3.35.0",
+    "lottie-react": "^2.4.1",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -21,6 +23,7 @@
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
+    "react-email": "5.0.4",
     "tailwindcss": "^4"
   }
 }

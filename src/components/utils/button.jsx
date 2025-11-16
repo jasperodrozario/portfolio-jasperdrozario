@@ -1,3 +1,4 @@
+"use client";
 import { twMerge } from "tailwind-merge";
 
 export default function Button({ children, className, ...props }) {

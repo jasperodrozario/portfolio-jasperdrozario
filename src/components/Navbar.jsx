@@ -28,6 +28,11 @@ export default function Navbar() {
     hover:after:origin-left
   `;
 
+  // Open Resume link
+  const openResume = () => {
+    window.open("/resume/resume.pdf", "_blank");
+  };
+
   // Logo cursor blinking logic
   const [hidden, setHidden] = useState(true);
   useEffect(() => {
@@ -72,7 +77,9 @@ export default function Navbar() {
       <a href="#contact">
         <li className={navListClass}>Contact</li>
       </a>
-      <Button className="ml-4 px-3 py-2">Resume</Button>
+      <Button onClick={openResume} className="ml-4 px-3 py-2">
+        Resume
+      </Button>
     </>
   );
 
