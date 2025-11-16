@@ -1,43 +1,53 @@
+"use client";
+
+import React, { useRef } from "react";
 import Button from "@/components/utils/button";
+import emailjs from "@emailjs/browser";
 
 export default function ContactForm() {
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+    console.log(form.current);
+    emailjs
+      .sendForm(
+        "service_yc670aa",
+        "template_7bqr8kh",
+        form.current,
+        "o7ZJLbK4if9ofkW_G"
+      )
+      .then(
+        () => {
+          alert("Message sent successfully!");
+          form.current.reset();
+        },
+        (error) => {
+          alert("Failed to send message, try again later.", error.text);
+        }
+      );
+  };
+
+  const now = new Date();
+  const currDate = now.toLocaleDateString();
+
   return (
     <div className="bg-neutral-900 p-8 rounded-lg shadow-lg">
       <h2 className="text-xl font-semibold mb-6 text-[#63FFD9]">
         Send a Message
       </h2>
-      <form className="space-y-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label
-              htmlFor="firstName"
-              className="block text-sm font-medium mb-2"
-            >
-              First Name
-            </label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              className="w-full px-4 py-3 border border-teal-700 rounded-lg focus:outline-none focus:border-[#63FFD9] focus:ring-1 focus:ring-[#63FFD9] transition-colors"
-              placeholder="John"
-            />
-          </div>
-          <div>
-            <label
-              htmlFor="lastName"
-              className="block text-sm font-medium mb-2"
-            >
-              Last Name
-            </label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              className="w-full px-4 py-3 border border-teal-700 rounded-lg focus:outline-none focus:border-[#63FFD9] focus:ring-1 focus:ring-[#63FFD9] transition-colors"
-              placeholder="Doe"
-            />
-          </div>
+      <form ref={form} onSubmit={sendEmail} className="space-y-6">
+        <div>
+          <input type="hidden" name="time" value={currDate} />
+          <label htmlFor="name" className="block text-sm font-medium mb-2">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            className="w-full px-4 py-3 border border-teal-700 rounded-lg focus:outline-none focus:border-[#63FFD9] focus:ring-1 focus:ring-[#63FFD9] transition-colors"
+            placeholder="Enter your full name"
+          />
         </div>
 
         <div>
@@ -49,7 +59,7 @@ export default function ContactForm() {
             id="email"
             name="email"
             className="w-full px-4 py-3 border border-teal-700 rounded-lg focus:outline-none focus:border-[#63FFD9] focus:ring-1 focus:ring-[#63FFD9] transition-colors"
-            placeholder="john@example.com"
+            placeholder="Enter your email"
             required
           />
         </div>

@@ -30,6 +30,8 @@ export const others = [
   { id: uuidv4(), tool: "Python" },
   { id: uuidv4(), tool: "Java" },
   { id: uuidv4(), tool: "Django" },
-  { id: uuidv4(), tool: "Flask" },
-  { id: uuidv4(), tool: "SQL" },
+  { id: uuidv4(), tool: "MySQL" },
+  { id: uuidv4(), tool: "MongoDB" },
+  { id: uuidv4(), tool: "InfluxDB" },
+  { id: uuidv4(), tool: "Cloudinary" },
 ];

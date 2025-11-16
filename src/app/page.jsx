@@ -39,6 +39,11 @@ import {
   IconMapPin,
   IconClock,
   IconBrandGithub,
+  IconExplicit,
+  IconBrandBootstrap,
+  IconBrandMeetup,
+  IconMathGreater,
+  IconShadow,
 } from "@tabler/icons-react";
 import LottieAnimation from "@/components/LottieAnimation";
 
@@ -55,6 +60,14 @@ export default function Home() {
         return <IconBrandNextjs className="min-h-6 min-w-6" />;
       case "Tailwind CSS":
         return <IconBrandTailwind className="min-h-6 min-w-6" />;
+      case "Bootstrap":
+        return <IconBrandBootstrap className="min-h-6 min-w-6" />;
+      case "Material UI":
+        return <IconBrandMeetup className="min-h-6 min-w-6" />;
+      case "Aceternity":
+        return <IconMathGreater className="min-h-6 min-w-6" />;
+      case "Shadcn":
+        return <IconShadow className="min-h-6 min-w-6" />;
       case "Node.js":
         return <IconBrandNodejs className="min-h-6 min-w-6" />;
       case "MongoDB":
@@ -65,8 +78,8 @@ export default function Home() {
         return <IconCloud className="min-h-6 min-w-6" />;
       case "Firebase":
         return <IconBrandFirebase className="min-h-6 min-w-6" />;
-      case "Express":
-        return <IconBrandExpressjs className="min-h-6 min-w-6" />;
+      case "Express.js":
+        return <IconExplicit className="min-h-6 min-w-6" />;
       case "Git":
         return <IconBrandGit className="min-h-6 min-w-6" />;
       case "Docker":
@@ -77,7 +90,7 @@ export default function Home() {
         return <IconCoffee className="min-h-6 min-w-6" />;
       case "Django":
         return <IconBrandDjango className="min-h-6 min-w-6" />;
-      case "SQL":
+      case "MySQL":
         return <IconBrandMysql className="min-h-6 min-w-6" />;
       case "Firebase":
         return <IconBrandFirebase className="min-h-6 min-w-6" />;
@@ -140,8 +153,8 @@ export default function Home() {
                 Hello! I'm a motivated CSE student from Independent University,
                 Bangladesh (IUB), with all coursework now complete (only thesis
                 remaining). I'm possessing a strong foundation in programming
-                and problem-solving, passionate about web development and new
-                technologies. I am a fast learner who thrives in collaborative
+                and problem-solving, passionate about web development and AI integration.
+                I am a fast learner who thrives in collaborative
                 environments. I am seeking to apply my skills to contribute to
                 challenging projects in a professional environment.
               </p>
